@@ -1,6 +1,9 @@
 import './index.scss'
 
-const BottomResultBox = () => {
+const BottomResultBox = ({word}:any) => {
+  const longest = word.trim().replaceAll(/\!|\.|\?|\,/g, ' ').replace(/\n/g, ' ').toLowerCase().split(" ")
+      .sort((words:string, words1:string)=>words.length>words1.length?-1:1)[0]
+  console.log("lonest",longest)
   const bottomResultBar = [
     {
       title: 'Average Reading Time:',
@@ -8,7 +11,7 @@ const BottomResultBox = () => {
     },
     {
       title: 'Longest word:',
-      value: '-',
+      value: longest,
     },
   ]
 
