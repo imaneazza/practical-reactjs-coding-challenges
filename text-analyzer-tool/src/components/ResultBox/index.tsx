@@ -1,33 +1,27 @@
 import './index.scss'
 import {pronouns} from "../../data/pronouns";
 
-const ResultBox = ({word}: any) => {
-    const regex = /\!|\.|\?/g
-    console.log(word.trim().split(/\n/).filter((w: string) => w !== ''))
-    console.log(word.trim().replace(regex, ' ').replace(/\n/, ' ').split(" "))
-    const pronounscount = word.trim().replaceAll(regex, ' ').replace(/\n/g, ' ').toLowerCase().split(" ").filter((pr:string) => pronouns.includes(pr)).length
-    const parCount = word.trim().split(/\n/).filter((w: string) => w !== '').length
-    const sentences =word.trim().split(regex).filter((w:string)=>w!=='').length
+const ResultBox = ({results}: any) => {
     const resultBar = [
         {
             title: 'Words',
-            value: word.split(" ").length,
+            value: results.words,
         },
         {
             title: 'Characters',
-            value: word.length,
+            value: results.Characters,
         },
         {
             title: 'Sentences',
-            value:sentences,
+            value:results.sentences,
         },
         {
             title: 'Paragraphs ',
-            value: parCount,
+            value: results.paragraphes,
         },
         {
             title: 'Pronouns',
-            value: pronounscount,
+            value: results.pronouns,
         },
     ]
 
